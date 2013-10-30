@@ -1,0 +1,29 @@
+%div{ 'ng-controller' => 'AlumnosCtrl' }
+  %h1 Alumnos
+
+  %form.form-inline{ 'ng-submit' => 'create()', role: 'form' }
+    .form-group
+      = label_tag :nombre, 'Nombre', class: 'sr-only'
+      = text_field_tag 'nombre', nil, 'ng-model' => 'newAlumno.nombre', class: 'form-control', placeholder: 'Nombre'
+    .form-group
+      = label_tag :primer_apellido, 'Primer apellido', class: 'sr-only'
+      = text_field_tag 'primer_apellido', nil, 'ng-model' => 'newAlumno.primer_apellido', class: 'form-control', placeholder: 'Primer apellido'
+    .form-group
+      = label_tag :segundo_apellido, 'Segundo apellido', class: 'sr-only'
+      = text_field_tag 'segundo_apellido', nil, 'ng-model' => 'newAlumno.segundo_apellido', class: 'form-control', placeholder: 'Segundo apellido'
+    %button{ type: 'submit', class: 'btn btn-default' }
+      %i.glyphicon.glyphicon-user
+      Crear alumno
+    
+
+  %table.table
+    %thead
+      %tr
+        %th Nombre
+        %th Primer apellido
+        %th Segundo apellido
+    %tbody
+      %tr{ 'ng-repeat' => 'alumno in alumnos' }
+        %td {{ alumno.nombre }}
+        %td {{ alumno.primer_apellido }}
+        %td {{ alumno.segundo_apellido }}
