@@ -1,0 +1,15 @@
+%h1 Editar alumno
+
+%form{ 'ng-submit' => 'update()', role: 'form' }
+  .form-group
+    %label.sr-only{ for: :nombre } Nombre
+    %input.form-control{ type: :text, name: :nombre, id: :nombre, placeholder: 'Nombre', 'ng-model' => 'alumno.nombre' }
+  .form-group
+    %label.sr-only{ for: :primer_apellido } Primer apellido
+    %input.form-control{ type: :text, name: :primer_apellido, id: :primer_apellido, placeholder: 'Primer apellido', 'ng-model' => 'alumno.primer_apellido' }
+  .form-group
+    %label.sr-only{ for: :segundo_apellido } Segundo apellido
+    %input.form-control{ type: :text, name: :segundo_apellido, id: :segundo_apellido, placeholder: 'Segundo apellido', 'ng-model' => 'alumno.segundo_apellido' }
+  %button{ type: 'submit', class: 'btn btn-default' }
+    %i.glyphicon.glyphicon-user
+    Guardar alumno

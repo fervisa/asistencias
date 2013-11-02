@@ -1,0 +1,31 @@
+%h1 Alumnos
+
+%form.form-inline{ 'ng-submit' => 'create()', role: 'form' }
+  .form-group
+    %label.sr-only{ for: :nombre } Nombre
+    %input.form-control{ type: :text, name: :nombre, id: :nombre, placeholder: 'Nombre', 'ng-model' => 'newAlumno.nombre' }
+  .form-group
+    %label.sr-only{ for: :primer_apellido } Primer apellido
+    %input.form-control{ type: :text, name: :primer_apellido, id: :primer_apellido, placeholder: 'Primer apellido', 'ng-model' => 'newAlumno.primer_apellido' }
+  .form-group
+    %label.sr-only{ for: :segundo_apellido } Segundo apellido
+    %input.form-control{ type: :text, name: :segundo_apellido, id: :segundo_apellido, placeholder: 'Segundo apellido', 'ng-model' => 'newAlumno.segundo_apellido' }
+  %button{ type: 'submit', class: 'btn btn-default' }
+    %i.glyphicon.glyphicon-user
+    Crear alumno
+
+%table.table
+  %thead
+    %tr
+      %th Nombre
+      %th Primer apellido
+      %th Segundo apellido
+      %th Acciones
+  %tbody
+    %tr{ 'ng-repeat' => 'alumno in alumnos' }
+      %td {{ alumno.nombre }}
+      %td {{ alumno.primer_apellido }}
+      %td {{ alumno.segundo_apellido }}
+      %td
+        %a{ href: "#/edit/{{alumno.id}}" }
+          %i.glyphicon.glyphicon-pencil
