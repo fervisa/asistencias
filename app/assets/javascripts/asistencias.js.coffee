@@ -16,6 +16,26 @@ asistenciasApp.controller 'AlumnosCtrl', ['$scope', 'Alumno', ($scope, Alumno) -
     )
 ]
 
+asistenciasApp.controller 'EditAlumnoCtrl', ['$scope', '$location', '$routeParams', 'Alumno', ($scope, $location, $routeParams, Alumno) ->
+  $scope.alumno = Alumno.get({id: $routeParams.alumnoId})
+
+  $scope.update = () ->
+    $scope.alumno.$update()
+    $location.path '/'
+
+]
+
+asistenciasApp.config ($routeProvider) ->
+  $routeProvider
+    .when '/',
+      controller: 'AlumnosCtrl'
+      templateUrl: 'assets/alumnos.html'
+    .when '/edit/:alumnoId',
+      controller: 'EditAlumnoCtrl'
+      templateUrl: 'assets/editar_alumno.html'
+    .otherwise
+      redirectTo: '/'
+
 asistenciasApp.factory 'Alumno', ['$resource', ($resource) ->
-  $resource('/alumnos')
+  $resource '/alumnos/:id', { id: '@id' }, { update: { method: 'PUT' } }
 ]

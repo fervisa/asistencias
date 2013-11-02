@@ -1,9 +1,13 @@
 class AlumnosController < ApplicationController
   respond_to :json
-  skip_before_action :verify_authenticity_token, only: [:create]
+  skip_before_action :verify_authenticity_token, only: [:create, :update]
 
   def index
     render json: Alumno.all
+  end
+
+  def show
+    render json: Alumno.find(params[:id])
   end
 
   def create
@@ -12,7 +16,9 @@ class AlumnosController < ApplicationController
   end
 
   def update
+    alumno = Alumno.find(params[:id])
     alumno.update_attributes(safe_params)
+    head :ok
   end
 
   private

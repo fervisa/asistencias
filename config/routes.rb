@@ -1,6 +1,6 @@
 Asistencias::Application.routes.draw do
 
-  resources :alumnos, only: [:index, :create, :update]
+  resources :alumnos, only: [:index, :create, :update, :show]
 
   get "home/index"
   # The priority is based upon order of creation: first created -> highest priority.
